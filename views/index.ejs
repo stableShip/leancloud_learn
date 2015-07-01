@@ -8,14 +8,15 @@
   <body>
     <form id="userInfo">
         要创建的用户名:
-       <input type="text" name="username">
+       <input type="text" name="username"/>
        密码:
-       <input type="text" name="password">
-       <input type="button" value="创建一个用户" id="create">
-     <h1/>  
-    <input type="button" value="获取用户数据" id="geta" >
+       <input type="text" name="password"/>
+       <input type="button" value="创建一个用户" id="create"/>
+    </form>
+    <input type="button" value="获取用户数据" id="geta" />
     username:
-    <input type="text" value="JIE" id="userId">
+    <input type="text" value="JIE" id="userName"/>
+    <textarea rows="10" cols="30" hidden=true id="userdetail" value=""></textarea>
   </body>
   <script src="http://lib.sinaapp.com/js/jquery/1.9.1/jquery-1.9.1.min.js"></script>
   <script type='text/javascript'>
@@ -33,9 +34,10 @@
           $('#geta').click(function(){
       				$.ajax({
       					type:"get",
-      					url:"/user/"+$('#userId').val(),
+      					url:"/user/"+$('#userName').val(),
       					success:function(data){
-        					 alert(data);
+          				$('#userdetail').attr("placeholder", data);
+                  $('#userdetail').attr("hidden", false);
       					}
     				})
           });

@@ -16,7 +16,7 @@ router.get("/:username", function (req, res, done) {
 				var object = results[i];
 				console.log(object.id + ' - ' + object.get('playerName'));
 			}
-			res.send({user:results[0]})
+			res.send(JSON.stringify(results[0]));
 		},
 		error: function (error) {
 			res.send("Error: " + error.code + " " + error.message);
