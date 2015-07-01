@@ -6,9 +6,16 @@
   </head>
   
   <body>
-    <input type="button" value="创建一个用户" id="create">
+    <form id="userInfo">
+        要创建的用户名:
+       <input type="text" name="username">
+       密码:
+       <input type="text" name="password">
+       <input type="button" value="创建一个用户" id="create">
+     <h1/>  
     <input type="button" value="获取用户数据" id="geta" >
-    <input type="number" value="要获取的用户id" id="userId">
+    username:
+    <input type="text" value="JIE" id="userId">
   </body>
   <script src="http://lib.sinaapp.com/js/jquery/1.9.1/jquery-1.9.1.min.js"></script>
   <script type='text/javascript'>
@@ -17,6 +24,7 @@
       				$.ajax({
       					type:"post",
       					url:"/user",
+                data:$('#userInfo').serialize(),
       					success:function(data){
       							 alert(data);
       					}

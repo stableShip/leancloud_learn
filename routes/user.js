@@ -4,10 +4,10 @@ var AV = require('leanengine');
 
 var User = AV.Object.extend('User');
 
-router.get("/:id", function (req, res, done) {
-	var userId = req.params.id;
+router.get("/:username", function (req, res, done) {
+	var username = req.params.username;
 	var query = new AV.Query(User);
-	query.equalTo("username", "JIE");
+	query.equalTo("username", username);
 	query.find({
 		success: function (results) {
 			console.log("Successfully retrieved " + results.length + " scores.");
@@ -26,11 +26,11 @@ router.get("/:id", function (req, res, done) {
 
 
 router.post("/", function (req, res, done) {
+	console.log(req.body,"!!!!!!!!!!!!!!!");
 	// 创建该类的一个实例
 	var user = new User();
-	user.set("username", "JIE");
-	user.set("password", "123456");
-	user.set("email", "296888680@qq.com");
+	user.set("username", req.body.username);
+	user.set("password", req.body.password);
 	user.save(null, {
 		success: function (gameScore) {
 			// Execute any logic that should take place after the object is saved.
