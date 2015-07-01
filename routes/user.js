@@ -10,11 +10,9 @@ router.get("/:username", function (req, res, done) {
 	query.equalTo("username", username);
 	query.find({
 		success: function (results) {
-			console.log("Successfully retrieved " + results.length + " scores.");
 			// Do something with the returned AV.Object values
 			for (var i = 0; i < results.length; i++) {
 				var object = results[i];
-				console.log(object.id + ' - ' + object.get('playerName'));
 			}
 			res.send(JSON.stringify(results[0]));
 		},
@@ -26,7 +24,6 @@ router.get("/:username", function (req, res, done) {
 
 
 router.post("/", function (req, res, done) {
-	console.log(req.body,"!!!!!!!!!!!!!!!");
 	// 创建该类的一个实例
 	var user = new User();
 	user.set("username", req.body.username);
