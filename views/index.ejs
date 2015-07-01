@@ -1,0 +1,37 @@
+<!DOCTYPE HTML>
+<html>
+  
+  <head>
+    <title>JIE's Test</title>
+  </head>
+  
+  <body>
+    <input type="button" value="创建一个用户" id="create">
+    <input type="button" value="获取用户数据" id="geta" >
+    <input type="number" value="要获取的用户id" id="userId">
+  </body>
+  <script src="http://lib.sinaapp.com/js/jquery/1.9.1/jquery-1.9.1.min.js"></script>
+  <script type='text/javascript'>
+    $(function(){
+    			$('#create').click(function(){
+      				$.ajax({
+      					type:"post",
+      					url:"/user",
+      					success:function(data){
+      							 alert(data);
+      					}
+    				})
+          })
+          $('#geta').click(function(){
+      				$.ajax({
+      					type:"get",
+      					url:"/user/"+$('#userId').val(),
+      					success:function(data){
+        					 alert(data);
+      					}
+    				})
+          });
+  })
+  </script>
+
+</html>
