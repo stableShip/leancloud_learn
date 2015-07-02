@@ -9,7 +9,7 @@ router.get("/:username", function (req, res, done) {
 	var query = new AV.Query(User);
 	query.equalTo("username", username);
 	query.find().try(function (users) {
-		res.send(users[0])
+		res.send(JSON.stringify(users))
 	}).catch(function (err) {
 		res.send(err.message);
 	})
@@ -40,7 +40,7 @@ router.post("/login", function (req, res, done) {
 	}).catch(function (error) {
 		console.log(error, "error");
 		res.send(error);
-	})
+	});
 });
 
 router.get("/logout", function (req, res, done) {

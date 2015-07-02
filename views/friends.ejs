@@ -1,0 +1,54 @@
+<!DOCTYPE HTML>
+<html>
+  
+  <head>
+    <title>Friends</title>
+  </head>
+  
+  <body>
+    <input type="button" value="查找用户" id="geta" />
+    username:
+    <input type="text" value="JIE" id="username"/>
+    <textarea rows="10" cols="30" hidden=true id="userdetail" value=""></textarea>
+    <input type="button" value="加为好友" id="addFriend">
+    
+    <input id="id" hidden="true">
+  </body>
+  <script src="http://lib.sinaapp.com/js/jquery/1.9.1/jquery-1.9.1.min.js"></script>
+  <script type='text/javascript'>
+    $(function(){
+    			$('#addFriend').click(function(){
+            if($('#id').val()){
+        				$.ajax({
+        					type:"post",
+        					url:"/friend",
+                  data:{"id":$('#id').val()},
+        					success:function(data){
+        							 alert(data);
+        					}
+      				  })
+            }else{
+              alert("用户信息不存在")
+            }
+          });
+          $('#geta').click(function(){
+      				$.ajax({
+      					type:"get",
+      					url:"/friend/"+$('#username').val(),
+      					success:function(data){
+          				$('#userdetail').attr("placeholder", data.user);
+          				$('#id').attr("value", data.id);
+                  $('#userdetail').attr("hidden", false);
+      					}
+    				})
+          });
+          $('#friend').click(function(){
+      				$.ajax({
+      					type:"get",
+      					url:"/friends/",
+      				})
+          });
+  })
+  </script>
+
+</html>

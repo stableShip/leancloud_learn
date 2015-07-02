@@ -6,6 +6,7 @@ var bodyParser = require('body-parser');
 var path = require('path');
 var methodOverride = require('method-override');
 var User = require("./routes/user");
+var Friends = require("./routes/friends");
 var cloud=require("./cloud");
 // App 全局配置
 app.set('views', path.join(__dirname, 'views'));   // 设置模板目录
@@ -27,6 +28,8 @@ app.use(bodyParser.json({
 app.use(methodOverride());
 
 app.use("/user", User);
+app.use("/friend", Friends);
+
 
 app.get('/', function (req, res) {
   res.render('index');

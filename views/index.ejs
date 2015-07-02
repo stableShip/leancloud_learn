@@ -29,6 +29,8 @@
     username:
     <input type="text" value="JIE" id="username"/>
     <textarea rows="10" cols="30" hidden=true id="userdetail" value=""></textarea>
+    <input type="button" value="好友管理" id="friend"/>
+    
   </body>
   <script src="http://lib.sinaapp.com/js/jquery/1.9.1/jquery-1.9.1.min.js"></script>
   <script type='text/javascript'>
@@ -73,6 +75,9 @@
                   $('#userdetail').attr("hidden", false);
       					}
     				})
+          });
+          $('#friend').click(function(){
+              window.location.href="/friend"
           });
   })
   </script>
