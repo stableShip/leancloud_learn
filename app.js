@@ -14,6 +14,7 @@ app.use(express.static('public'));
 
 // 加载云代码方法
 app.use(cloud);
+app.use(cloud.CookieSession({ secret: 'my secret', maxAge: 3600000, fetchUser: true }));
 
 app.use(bodyParser.urlencoded({
   extended: false

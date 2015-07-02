@@ -13,9 +13,21 @@
        <input type="text" name="password"/>
        <input type="button" value="创建一个用户" id="create"/>
     </form>
+    
+     <form id="login">
+       <h1>登陆:</h1><br/>
+        用户名:
+       <input type="text" name="username"/>
+       密码:
+       <input type="text" name="password"/>
+       <input type="button" value="登陆" id="login"/>
+       <input type="button" value="注销" id="logout"/>
+       
+    </form>
+    
     <input type="button" value="获取用户数据" id="geta" />
     username:
-    <input type="text" value="JIE" id="userName"/>
+    <input type="text" value="JIE" id="username"/>
     <textarea rows="10" cols="30" hidden=true id="userdetail" value=""></textarea>
   </body>
   <script src="http://lib.sinaapp.com/js/jquery/1.9.1/jquery-1.9.1.min.js"></script>
@@ -30,11 +42,32 @@
       							 alert(data);
       					}
     				})
-          })
+          });
           $('#geta').click(function(){
       				$.ajax({
       					type:"get",
-      					url:"/user/"+$('#userName').val(),
+      					url:"/user/"+$('#username').val(),
+      					success:function(data){
+          				$('#userdetail').attr("placeholder", data);
+                  $('#userdetail').attr("hidden", false);
+      					}
+    				})
+          });
+           $('#login').click(function(){
+      				$.ajax({
+      					type:"post",
+      					url:"/user/login",
+                data:$('#login').serialize(),
+      					success:function(data){
+          				$('#userdetail').attr("placeholder", data);
+                  $('#userdetail').attr("hidden", false);
+      					}
+    				})
+          });
+            $('#logout').click(function(){
+      				$.ajax({
+      					type:"get",
+      					url:"/user/logout",
       					success:function(data){
           				$('#userdetail').attr("placeholder", data);
                   $('#userdetail').attr("hidden", false);
