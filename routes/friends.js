@@ -24,6 +24,9 @@ router.get("/:username", function (req, res, done) {
 
 router.post("/", function (req, res, done) {
 	var user = req.AV.user;
+	if(!user){
+		return res.send("请重新登陆")
+	}
 	var relation = user.relation("friends");
 	var friend = new User();
 	friend.id=req.body.id;

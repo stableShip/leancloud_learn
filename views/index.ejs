@@ -14,7 +14,7 @@
        <input type="button" value="创建一个用户" id="create"/>
     </form>
     
-     <form id="login">
+     <form id="userLogin">
        <h1>登陆:</h1><br/>
         用户名:
        <input type="text" name="username"/>
@@ -59,7 +59,7 @@
       				$.ajax({
       					type:"post",
       					url:"/user/login",
-                data:$('#login').serialize(),
+                data:$('#userLogin').serialize(),
       					success:function(data){
           				$('#userdetail').attr("placeholder", data);
                   $('#userdetail').attr("hidden", false);
