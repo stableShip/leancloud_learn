@@ -1,5 +1,7 @@
 # node-js-getting-started
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/stableShip/leancloud_learn.svg)](https://greenkeeper.io/)
+
 一个简单的使用 Express 4 的 Node.js 应用。
 可以运行在 LeanEngine Node.js 运行时环境。
 
